@@ -1,9 +1,16 @@
 import * as express from "express";
-import { pingController } from "./controllers/ping";
-var cors = require('cors');
-
+import { result } from "./controllers/ping";
+var cors = require("cors");
 const app = express();
+app.use(cors({ origin: "*" }));
 
-app.use(cors({ origin: '*' }),pingController);
-
+app.get("/hello", (_, res) => {
+  res.status(200).json(result);
+});
 export default app;
+
+
+
+
+
+
